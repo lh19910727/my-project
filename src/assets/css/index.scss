@@ -1,0 +1,26 @@
+@charset "utf-8";
+@import "./style.scss";
+.index {
+	width: 80%;
+	margin: 1.25rem auto;
+	position: relative;
+	.public-right {
+		margin-left: 14.375rem;
+		.public-menu {
+			background-color: #d8d8d8;
+			// border-left: .1875rem solid #42b983;
+			border-top: .0625rem solid #e8e8e8;
+			border-bottom: .0625rem solid #e8e8e8;
+			li {
+				display: inline-block;
+				padding: .625rem .9375rem;
+			}
+			li.active {
+				background-color: #42b983;
+				a {
+					color: #fff;
+				}
+			}
+		}
+	}
+}

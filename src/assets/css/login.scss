@@ -1,0 +1,29 @@
+@charset "utf-8";
+@import "./style.scss";
+.login {
+	text-align: center;
+	padding-top: 20%;
+	h3 {
+		@include fontSize(1.125rem);
+		@include paddingB(1.25rem);
+		font-weight: normal;
+		letter-spacing: .125rem;
+	}
+	.row {
+		@include paddingB(15px);
+		label {
+			padding-right: .625rem;
+		}
+		input {
+			width: 14.1875rem;
+		}
+	}
+	.btn {
+		@include radius();
+		width: 18rem;
+		background-color: #42b983;
+		border: .0625rem solid #42b983;
+		color: #fff;
+		margin-top: 1.25rem;
+	}
+}
