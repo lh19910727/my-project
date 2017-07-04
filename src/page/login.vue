@@ -3,7 +3,7 @@
 		<div class="title">登录</div>
 		<input maxlength="11" class="form-control" id="inputEmail" placeholder="请输入账号" v-model="account">
 		<input maxlength="6" type="password" class="form-control" id="inputPassword" placeholder="请输入密码" v-model="password">
-		<button type="submit" class="btn btn-default" @click="login">登录</button>
+		<button type="submit" class="btn-default" @click="login">登录</button>
 		<a href="/register" class="register">注册账号</a>
 	</div>
 </template>
@@ -15,7 +15,8 @@
 		data() {
 			return {
 				account: '',
-				password: ''
+				password: '',
+				returnUrl:''
 			}
 		},
 		methods: {
@@ -33,7 +34,7 @@
 				if(this.account && this.password) {
 					let self = this;
 					self.$axios.get('/api/login/getAccount')
-						.then(function(data) {
+						.then((data) => {
 							if(data.status === 200) {
 
 								for(var i = 0; i < data.data.length; i++) {
@@ -47,9 +48,16 @@
 											text: '登录成功',
 											type: 'success'
 										})
+										localStorage.setItem('key',this.account)
 										setTimeout(function(){
-											location.href = '/'
-										},1000)
+											
+											this.returnUrl=this.$route.query.returnUrl?decodeURIComponent(this.$route.query.returnUrl):'/index'
+											
+											let url=this.returnUrl.split('/')[this.returnUrl.split('/').length-1]
+//											console.log(returnURL)
+											this.$router.replace('/'+url)
+											console.log(url)
+										}.bind(this),1000)
 										
 									}else if(self.account == data.data[i].account && self.password != data.data[i].password) {
 										self.showToast({
@@ -83,24 +91,35 @@
 </script>
 
 <style lang="scss">
+	@import url("../assets/css/reset.css");
 	.title {
 		margin: 0 auto 1rem;
-		font-size: 1rem;
+		font-size: 1.5rem;
+		text-align: center;
 	}
-	
 	#inputEmail {
 		display: block;
 		margin: 1rem auto;
 	}
-	
+	.btn-default{
+		display: block;
+		width: 10rem;
+		height: 3.5rem;
+		font-size: 1.5rem;
+		text-align: center;
+		margin: 2rem auto;
+	}
 	input {
 		display: block;
 		margin: 0 auto;
-		width: 15rem;
+		width:30rem;
+		height: 3rem;
+		font-size: 1.5rem;
 	}
 	.register{
 		display: block;
 		margin-top:1rem;
 		color: #159DFF;
+		text-align: center;
 	}
 </style>

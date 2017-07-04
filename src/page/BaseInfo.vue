@@ -30,8 +30,8 @@ export default {
     return {
       // userInfo: {'name': 'ying', 'phone': '15195601069', 'email': '2332893183@qq.com', 'github': 'www.baidu.com'},
       userInfo: [],
-      name: 'ying',
-      phone: '15195601069',
+      name: '',
+      phone: '',
       email: '',
       github: ''
     }

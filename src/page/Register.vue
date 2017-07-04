@@ -4,7 +4,7 @@
 			<h1>注册</h1>
 			<div class="box-row  w-box">
 				<span class="name  flex-1" >用户名:</span>
-				<Cinput placeholder="请输入用户名" v-focus maxlength='11' v-model='customerName' @onInput="customerName=arguments[0].trim()"></Cinput>
+				<Cinput placeholder="请输入用户名"   maxlength='11' v-model='customerName' @onInput="customerName=arguments[0].trim()"></Cinput>
 			</div>
 			<div class="box-row  w-box">
 				<span class="name  flex-1">密码:</span>
@@ -103,7 +103,7 @@
 			margin:0 auto ;
 			width:21rem;
 			h1{
-				width: 5rem;
+				width: 10rem;
 				font-weight:normal;
 				margin: 0 auto 2rem;
 			}

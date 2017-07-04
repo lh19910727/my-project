@@ -56,42 +56,6 @@
 					<popup-picker ref="applicantJob" title="" :data="list1" v-model="job" @on-show="onShow" @on-hide="onHide" @on-change="onChange" placeholder="请输入职业"></popup-picker>
 				</group>
 			</div>
-			<div class="box-row">
-				<div class="name">职业</div>
-				<group>
-					<popup-picker ref="applicantJob" title="" :data="list1" v-model="job" @on-show="onShow" @on-hide="onHide" @on-change="onChange" placeholder="请输入职业"></popup-picker>
-				</group>
-			</div>
-			<div class="box-row">
-				<div class="name">职业</div>
-				<group>
-					<popup-picker ref="applicantJob" title="" :data="list1" v-model="job" @on-show="onShow" @on-hide="onHide" @on-change="onChange" placeholder="请输入职业"></popup-picker>
-				</group>
-			</div>
-			<div class="box-row">
-				<div class="name">职业</div>
-				<group>
-					<popup-picker ref="applicantJob" title="" :data="list1" v-model="job" @on-show="onShow" @on-hide="onHide" @on-change="onChange" placeholder="请输入职业"></popup-picker>
-				</group>
-			</div>
-			<div class="box-row">
-				<div class="name">职业</div>
-				<group>
-					<popup-picker ref="applicantJob" title="" :data="list1" v-model="job" @on-show="onShow" @on-hide="onHide" @on-change="onChange" placeholder="请输入职业"></popup-picker>
-				</group>
-			</div>
-			<div class="box-row">
-				<div class="name">职业</div>
-				<group>
-					<popup-picker ref="applicantJob" title="" :data="list1" v-model="job" @on-show="onShow" @on-hide="onHide" @on-change="onChange" placeholder="请输入职业"></popup-picker>
-				</group>
-			</div>
-			<div class="box-row">
-				<div class="name">职业</div>
-				<group>
-					<popup-picker ref="applicantJob" title="" :data="list1" v-model="job" @on-show="onShow" @on-hide="onHide" @on-change="onChange" placeholder="请输入职业"></popup-picker>
-				</group>
-			</div>
 			<div class="bottom">
 			<div class="btn" @click="post">立即投保</div>
 		</div>
@@ -163,6 +127,9 @@
 			}
 		},
 		mounted() {
+			if(!localStorage.getItem('key')){
+				this.$router.push('/login2?returnUrl='+encodeURIComponent(location.href))
+			}
 			console.log(Array.isArray(this.addressData))
 		},
 		methods: {

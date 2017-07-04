@@ -2,19 +2,19 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 //Index下的子页面
-import Index from '@/frame/Index'
-import baseInfo from '@/page/baseInfo'
-import UserMain from '@/page/user/main'
-import UserFooter from '@/page/user/footer'
-
-import UserInfo from '@/page/UserInfo'
-import WorkHistory from '@/page/WorkHistory'
-import Login from '@/page/user/Login'
-import inputTest from '@/page/inputTest'
-import uploadPhoto from '@/page/uploadPhoto'
-import index from '@/page/index'
-import login from '@/page/login'
-import Register from '@/page/Register'
+//import Index from '@/frame/Index'
+//import baseInfo from '@/page/baseInfo'
+//import UserMain from '@/page/user/main'
+//import UserFooter from '@/page/user/footer'
+//
+//import UserInfo from '@/page/UserInfo'
+//import WorkHistory from '@/page/WorkHistory'
+//import Login from '@/page/user/Login'
+//import inputTest from '@/page/inputTest'
+//import uploadPhoto from '@/page/uploadPhoto'
+////import index from '@/page/index'
+//import login from '@/page/login'
+//import Register from '@/page/Register'
 Vue.use(Router)
 
 export default new Router({
@@ -23,53 +23,56 @@ export default new Router({
   {
       path: '/',
       // name: 'UserInfo',
-      component: index,
-      chileren:[]
+      component:(resolve)=>{require(['@/page/index'],resolve)},
+      children:[
+      {path:'/children1',component:(resolve)=>{require(['@/page/children1'],resolve)}},
+      {path:'/children2',component:(resolve)=>{require(['@/page/children2'],resolve)}}
+      ]
     },
     {
       path: '/index',
-      component: Index,
+      component: (resolve)=>{require(['@/frame/Index'],resolve)},
       children: [
-        {path: '/', component: baseInfo},
-        {path: '/baseInfo', component: baseInfo},
-        {path: 'workHistory', component: WorkHistory},
-        {path: 'footer', component: UserFooter}
+        {path: '/', component:(resolve)=>{require(['@/page/baseInfo'],resolve)}},
+        {path: '/baseInfo', component: (resolve)=>{require(['@/page/baseInfo'],resolve)}},
+        {path: 'workHistory', component: (resolve)=>{require(['@/page/WorkHistory'],resolve)} },
+        {path: 'footer', component: (resolve)=>{require(['@/page/user/footer'],resolve)} }
       ]
     },
     {
       path: '/userInfo',
       // name: 'UserInfo',
-      component: UserInfo
+     component:(resolve)=>{require(['@/page/UserInfo'],resolve)}
     },
     {
       path: '/workHistory',
       // name: 'WorkHistory',
-      component: WorkHistory
+      component:(resolve)=>{require(['@/page/WorkHistory'],resolve)}
     },
     {
       path: '/login',
       // name: 'Login',
-      component: Login
+      component: (resolve)=>{require(['@/page/user/Login'],resolve)}
     },
      {
       path: '/inputTest',
       // name: 'Login',
-      component: inputTest
+      component: (resolve)=>{require(['@/page/inputTest'],resolve)}
     },
      {
       path: '/upload',
       // name: 'Login',
-      component: uploadPhoto
+      component: (resolve)=>{require(['@/page/uploadPhoto'],resolve)}
     },
     {
       path: '/login2',
       // name: 'Login',
-      component: login
+      component:  (resolve)=>{require(['@/page/login'],resolve)}
     },
     {
       path: '/register',
       // name: 'Login',
-      component: Register
+      component:  (resolve)=>{require(['@/page/Register'],resolve)}
     }
   ]
 })
