@@ -1,22 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
-//Index下的子页面
-//import Index from '@/frame/Index'
-//import baseInfo from '@/page/baseInfo'
-//import UserMain from '@/page/user/main'
-//import UserFooter from '@/page/user/footer'
-//
-//import UserInfo from '@/page/UserInfo'
-//import WorkHistory from '@/page/WorkHistory'
-//import Login from '@/page/user/Login'
-//import inputTest from '@/page/inputTest'
-//import uploadPhoto from '@/page/uploadPhoto'
-////import index from '@/page/index'
-//import login from '@/page/login'
-//import Register from '@/page/Register'
+import GComponents from '@/components/pubComponents.js'
 Vue.use(Router)
-
+Vue.use(GComponents)
 export default new Router({
      mode: 'history',
   routes: [

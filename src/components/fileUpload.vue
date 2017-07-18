@@ -1,5 +1,9 @@
 <template>
-	<input class="hq-file-upload" ref="camera" type="file" accept="image/*"  @change="change">
+	<div class="hq-upload">
+		<input class="hq-file-upload" ref="camera"   type="file" accept="image/*;capture=camera"  @change="change">
+		<!--<input class="hq-file-upload" type="file" capture="camera" accept="image/*">-->
+	</div>
+	
 </template>
 <script>
 	export default {
@@ -17,6 +21,10 @@
         },
         mounted(){
            this.image = null;
+           let a;
+           if(a){
+           	alert(1)
+           }
         },
         methods:{
         	change(e){

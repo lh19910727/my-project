@@ -53,7 +53,7 @@
 			<div class="box-row">
 				<div class="name">职业</div>
 				<group>
-					<popup-picker ref="applicantJob" title="" :data="list1" v-model="job" @on-show="onShow" @on-hide="onHide" @on-change="onChange" placeholder="请输入职业"></popup-picker>
+					<popup-picker ref="applicantJob" title="" :data="list1" v-model="job" @on-change="onChange" placeholder="请输入职业"></popup-picker>
 				</group>
 			</div>
 			<div class="bottom">
