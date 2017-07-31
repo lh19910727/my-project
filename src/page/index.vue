@@ -9,7 +9,7 @@
 		<router-link class="enter" to="/inputTest">进入input</router-link>
 		<a class="enter" @click="ExitAccount" href="javascript:;">退出账号</a>
 	</div>
-	<router-view></router-view>
+	<router-view transition="fade-leave"></router-view>
 </div>
 </template>
 
