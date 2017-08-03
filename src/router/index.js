@@ -1,17 +1,29 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import GComponents from '@/components/pubComponents.js'
-import { ToastPlugin} from 'vux'
+import { ToastPlugin,LoadingPlugin} from 'vux'
 Vue.use(Router)
 Vue.use(GComponents)
 Vue.use(ToastPlugin)
+Vue.use(LoadingPlugin)
 //Vue.use(XDialog)
 export default new Router({
      mode: 'history',
   routes: [
   {
+  	 path: '/refesh',
+     component:(resolve)=>{require(['@/page/refesh','n-zepto'],resolve)}
+  },
+  {
+  	 path: '/dbdetails',
+     component:(resolve)=>{require(['@/page/dbdetails','n-zepto'],resolve)}
+  },
+  {
+  	 path: '/dbindex',
+     component:(resolve)=>{require(['@/page/dbindex','n-zepto'],resolve)}
+  },
+  {
       path: '/',
-      // name: 'UserInfo',
       component:(resolve)=>{require(['@/page/index'],resolve)},
       children:[
       {path:'/children1',component:(resolve)=>{require(['@/page/children1'],resolve)}},

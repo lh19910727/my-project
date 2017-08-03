@@ -11,21 +11,10 @@
   </body>
 </html>
 <script>
-	//计算root fontsize
-//	window.__setFontSize__ = (function (doc, win) {
-//          var docEl = doc.documentElement,
-//              // resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-//              recalc = function () {
-//                  var clientWidth = docEl.clientWidth;
-//                  if (!clientWidth) return;
-//                  docEl.style.fontSize = 16 * (clientWidth / 375) + 'px';
-//              };
-//          if (!doc.addEventListener) return;
-//          doc.addEventListener('DOMContentLoaded', recalc, false);
-//          doc.addEventListener('resize', recalc, false);
-//
-//          return recalc;
-//      })(document, window);
+	var domain="api.douban.com"
+	window.requestLink=function(interfaceName){
+		return location.protocol+'//'+domain+interfaceName+'?'
+	}
     window.__setFontSize__ = (function (doc, win) {
         if(!IsPC()) { //移动端
             var docEl = doc.documentElement,
