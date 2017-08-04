@@ -19,7 +19,7 @@
 					</div>
 				</router-link>
 			</ul>
-			<load-more tip="loading"></load-more>
+			<load-more :tip="tip"></load-more>
 			</div>		
 			
 		</scroller>
@@ -34,12 +34,14 @@
 		name: 'dbindex',
 		data() {
 			return {
+				tip:'loading',
+				search:false,
 				isactive:'nav1',
 				onFetching: false,
 				initData: {},
 				list: [],
-				bottomCount:6,
-				count:6,
+				bottomCount:9,
+				total:0,
 				results: '张艺谋',
 				url: requestLink('/v2/movie/in_theaters') + 'count=6'
 			}
@@ -80,7 +82,6 @@
 		},
 		methods: {
 			setUrl(){
-				console.log(this.bottomCount)
 				switch(this.isactive){
 					case 'nav1':
 					this.url = requestLink('/v2/movie/in_theaters') + 'count=6'
@@ -90,10 +91,14 @@
 					break;
 					case 'nav3':
 					this.url=requestLink('/v2/movie/top250')+'count='+ this.bottomCount
+					default:
+					break;
 				}
 			},
 			changeTab(ev){
-				this.bottomCount=6
+//				debugger
+				this.search=false
+				this.bottomCount=9
 				let targetClass=ev.target.className.split(' ')[0]
 				if(targetClass!='nav1'&&targetClass!='nav2'&&targetClass!='nav3') return
 				this.isactive=targetClass
@@ -115,8 +120,13 @@
 					setTimeout(() => {
 						
 						this.bottomCount +=3
-//						console.log(this.bottomCount)
-						this.setUrl()
+						if(this.bottomCount>=this.total){
+							this.tip="已经最后一张啦；"
+						}
+						if(!this.search){
+							this.setUrl()
+						}
+						
 						this.getData()
 						this.$nextTick(() => {
 							this.$refs.scrollerBottom.reset()
@@ -130,11 +140,16 @@
 
 			},
 			onSubmit() {
-				this.url = requestLink('/v2/movie/search') + 'q=' + this.results
+				this.search=true
+				this.bottomcount=9
+				
+				this.url=requestLink('/v2/movie/search') + 'q=' + this.results+'&'+this.bottomCount
+//				alert(this.bottomcount)
 				this.getData()
 			},
 			getData() {
 				let self = this
+				this.total=0
 				this.$vux.loading.show({
 					text: 'Loading'
 				})
@@ -144,12 +159,13 @@
 					data: '',
 					jsonp: 'callback',
 					success: function(res) {
-						console.log(res)
+//						console.log(res)
 						self.$vux.loading.hide({
 							text: 'loading...'
 						})
 						self.initData = res
 						self.list = res.subjects
+						self.total=res.total
 					}
 
 				})

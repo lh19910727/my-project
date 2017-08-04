@@ -20,6 +20,7 @@
     "n-zepto": "^1.2.0",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",
+    "vue-scroller": "^2.2.2",
     "vux": "^2.3.6"
   },
   "devDependencies": {

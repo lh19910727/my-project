@@ -10,6 +10,10 @@ Vue.use(LoadingPlugin)
 export default new Router({
      mode: 'history',
   routes: [
+   {
+  	 path: '/scroller',
+     component:(resolve)=>{require(['@/page/vue-scroller','n-zepto'],resolve)}
+  },
   {
   	 path: '/refesh',
      component:(resolve)=>{require(['@/page/refesh','n-zepto'],resolve)}
