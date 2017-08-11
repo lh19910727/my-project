@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import GComponents from '@/components/pubComponents.js'
 import { ToastPlugin,LoadingPlugin} from 'vux'
+
+
 Vue.use(Router)
 Vue.use(GComponents)
 Vue.use(ToastPlugin)
@@ -10,6 +12,14 @@ Vue.use(LoadingPlugin)
 export default new Router({
      mode: 'history',
   routes: [
+  {
+  	 path: '/mycollection',
+     component:(resolve)=>{require(['@/page/myCollection','n-zepto'],resolve)}
+  },
+  {
+  	 path: '/pulldown',
+     component:(resolve)=>{require(['@/page/pulldown','n-zepto'],resolve)}
+  },
    {
   	 path: '/scroller',
      component:(resolve)=>{require(['@/page/vue-scroller','n-zepto'],resolve)}
