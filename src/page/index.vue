@@ -22,7 +22,21 @@
 				
 			}
 		},
+		mounted(){
+			window.addEventListener('popstate',function(){
+				 window.location.replace(location.href);
+			})
+			 function pushHistory() { 
+			     var state = { 
+			       title: "title", 
+			       url: "#"
+			     }; 
+			     window.history.pushState(state, "title", "#"); 
+			   }
+//			 pushHistory(); 
+		},
 		methods:{
+			
 			showToast(options) {
 				this.$vux.toast.show({
 					text: options.text || '', // text: 提示文字
@@ -33,6 +47,8 @@
 				})
 			},
 			ExitAccount(){
+//				window.history.back();
+//				WeixinJSBridge.call('closeWindow');
 				if(localStorage.getItem('key')){
 					localStorage.removeItem('key')
 					this.showToast({text:'账号退出成功',type:'success'})
